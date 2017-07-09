@@ -1,0 +1,24 @@
+
+#main-form{
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#main-table{
+    max-width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.gimme-some-space{
+
+    margin: 5em;
+
+}
+/* Begone Number Spinners! */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

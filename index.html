@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="main.js"></script>
+
+</head>
+<body>
+
+    <div ng-app="app-calculator" ng-controller="mainController" ng-cloak>
+
+        <div class="text-center" style="margin: 3em">
+            <img style="max-height: 100px" id="logo" src="img/btc_logo.png">
+            <h2>Profit Calculator</h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 text-center">
+                <form id="main-form" class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Hashing Power:</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input ng-model="hashingPower" type="number" style="width: auto; display: inline-block;" class="form-control" placeholder="10">
+                                <select ng-model="hashingUnitOptions.selectedHashingUnit"
+                                        ng-options="unit.name for unit in hashingUnitOptions.availablehashingUnits track by unit.value"
+                                        style="width: auto; display: inline-block;" class="selectpicker form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" >Power Draw(w):</label>
+                        <div class="col-sm-10">
+                            <input ng-model="machineWattage" type="number" class="form-control" placeholder="1200W">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" >Power Cost(kw/h):</label>
+                        <div class="col-sm-10">
+                            <input ng-model="powerCost" type="number" class="form-control" placeholder="0.15 KW/h">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <table id="main-table" class="table table-bordered table-striped">
+                <tr>
+                    <th>Profit</th>
+                    <th>BTC</th>
+                    <th>USD</th>
+                    <th>GBP</th>
+                    <th>EUR</th>
+                    <th>Power Cost</th>
+                    <th>Profit</th>
+                </tr>
+                <tr>
+                    <td>Per Day</td>
+                    <td>&#3647; {{getBTCPerDay()}}</td>
+                    <td>$ {{getUSDPerDay()}}</td>
+                    <td>$ {{getGBPPerDay()}}</td>
+                    <td>$ {{getEURPerDay()}}</td>
+                    <td>$ {{getPowerCostPerDay()}}</td>
+                    <td>$ {{getProfitPerDay()}}</td>
+                </tr>
+                <tr>
+                    <td>Per Week</td>
+                    <td>&#3647; {{(getBTCPerDay() * 7).toPrecision(2)}}</td>
+                    <td>$ {{(getUSDPerDay() * 7).toFixed(2)}}</td>
+                    <td>$ {{(getGBPPerDay() * 7).toFixed(2)}}</td>
+                    <td>$ {{(getEURPerDay() * 7).toFixed(2)}}</td>
+                    <td>$ {{(getPowerCostPerDay() * 7).toFixed(2)}}</td>
+                    <td>$ {{(getProfitPerDay() * 7).toFixed(2)}}</td>
+                </tr>
+                <tr>
+                    <td>Per Month</td>
+                    <td>&#3647; {{(getBTCPerDay() * 30).toPrecision(2)}}</td>
+                    <td>$ {{(getUSDPerDay() * 30).toFixed(2)}}</td>
+                    <td>$ {{(getGBPPerDay() * 30).toFixed(2)}}</td>
+                    <td>$ {{(getEURPerDay() * 30).toFixed(2)}}</td>
+                    <td>$ {{(getPowerCostPerDay() * 30).toFixed(2)}}</td>
+                    <td>$ {{(getProfitPerDay() * 30).toFixed(2)}}</td>
+                </tr>
+                <tr>
+                    <td>Per Year</td>
+                    <td>&#3647; {{(getBTCPerDay() * 365).toPrecision(2)}}</td>
+                    <td>$ {{(getUSDPerDay() * 365).toFixed(2)}}</td>
+                    <td>$ {{(getGBPPerDay() * 365).toFixed(2)}}</td>
+                    <td>$ {{(getEURPerDay() * 365).toFixed(2)}}</td>
+                    <td>$ {{(getPowerCostPerDay() * 365).toFixed(2)}}</td>
+                    <td>$ {{(getProfitPerDay() * 365).toFixed(2)}}</td>
+                </tr>
+            </table>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 text-center">
+                <p>DISCLAIMER: This data is based upon exchange rate data from
+                    <a href="www.coindes.com" target="_blank">coindesk.com</a> & network data from
+                    <a href="www.blockchain.info" target="_blank">blockchain.info</a>. This information is also
+                    based off a 12.5 block reward <a href="https://en.bitcoin.it/wiki/Controlled_supply#Projected_Bitcoins_Short_Term" target="_blank">which is subject to change at any time</a>.</p>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+</html>
