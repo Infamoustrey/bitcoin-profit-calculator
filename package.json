@@ -1,0 +1,23 @@
+{
+  "name": "bitcoin-profit-calculator",
+  "version": "1.0.0",
+  "description": "A simple bitcoin mining calculator",
+  "main": "main.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Infamoustrey/bitcoin-profit-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Infamoustrey/bitcoin-profit-calculator/issues"
+  },
+  "homepage": "https://github.com/Infamoustrey/bitcoin-profit-calculator#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
